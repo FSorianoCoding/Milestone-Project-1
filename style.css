@@ -1,1 +1,9 @@
+body {
+    text-align: center;
+}
 
+#dealerHand img {
+    height: 200px;
+    width: 125px;
+    margin: 10px;
+}
