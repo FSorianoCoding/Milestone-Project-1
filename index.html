@@ -4,15 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Blackjack</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <div id="dealerHand"></div>
-    <div id="myHand"></div>
-    <div class="hitStayButtons">
-        <button type="button">Hit Me!</button>
-        <button type="button">Stay</button>
+    <!-- Borrowed CSS from another bootstrap activity for now to help me center the buttons -->
+    <!-- Will change as I'm able to visualize the code better. -->
+    <div class="px-4 py-5 my-5 text-center">
+
+        <!-- Creating a class to wrap the div's I will be working with -->
+        <div class="casino">
+
+            <!-- potential div for annoying with innerHTML if player wins, loses, or draws -->
+            <div id="resultsMessage"></div>
+
+            <!-- creating a dealer hand to insert dealer cards -->
+            <div id="dealerHand"></div>
+
+            <!-- creating player hand to insert cards -->
+            <div id="playerHand"></div>
+
+            <!-- creating interactive buttons to use for hit or stay -->
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+
+                <!-- will change to personal css once I can get the further along in the code -->
+                <button id="hit-button" type="button" class="btn btn-primary btn-lg px-4 gap-3">Hit Me!</button>
+                <button id="stay-button" type="button" class="btn btn-outline-secondary btn-lg px-4">Stay</button>
+            </div>
+        </div>
     </div>
+
+    <!-- Adding script here for now, if I need it to head, I will -->
     <script src="index.js"></script>
 </body>
 </html>

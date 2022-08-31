@@ -1,54 +1,28 @@
 // Blackjack
 // SIMPLE GAME
 
-// Find code for that accounts for a single deck of cards.  Reshuffles the deck after each turn.
+// Find code for that accounts for a single deck of cards.  Reshuffles the deck after each game.
 // How to account for user and AI both getting cards.
+// async function drawCards() {
 
-
-// Your Code Here
-
-async function shuffleDeck() {
-
-    let response = await fetch('https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-    let gameDeck = await response.json()
-
-    // books.forEach(renderBook)
-    console.log(gameDeck)
-}
-
-
-// function renderBook(book) {
-//     let root = document.querySelector('#root')
-
-//     let li = document.createElement('li')
-//     li.textContent = book.title
-
-//     let quantityInput = document.createElement('input')
-//     quantityInput.value = book.quantity
-
-//     let saveButton = document.createElement('button')
-//     saveButton.textContent = 'Save'
-
-//     saveButton.addEventListener('click', () => {
-//         fetch('http://localhost:3001/updateBook', {
-//             method: 'PATCH',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify({
-//                 id: book.id,
-//                 quantity: quantityInput.value
-//             })
-//         })
-//     })
-
-//     li.append(quantityInput, saveButton)
-
-//     root.append(li)
+//     let response = await fetch('https://www.deckofcardsapi.com/api/deck/qdw3bc0ckqi9/draw/?count=2')
+//     let drawnCards = await response.json()
+//     console.log(drawnCards)
 // }
+// drawCards()
+
+// async function shuffleDeck() {
+
+//     let response = await fetch('https://www.deckofcardsapi.com/api/deck/qdw3bc0ckqi9/shuffle/')
+//     let shuffle = await response.json()
+//     console.log(shuffle)
+// }
+// shuffleDeck()
+
+// Could get API to work, but could not figure out how to apply it to a my own JS or HTML. Not enough experience with json.
 
 
-shuffleDeck();
+
 
 // Once you have cards, how to account for keeping them 21 and under or for the AI winning if they have 21 and under, but above yours.
 
