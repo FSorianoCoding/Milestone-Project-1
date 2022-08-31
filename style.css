@@ -13,3 +13,11 @@ body {
     width: 125px;
     margin: 10px;
 }
+
+#hit-button {
+    width: 150px;
+}
+
+#stay-button {
+    width: 150px;
+}
