@@ -28,3 +28,10 @@
 
 // TALLY HOW MANY TIMES PERSON HAS WON.  
 // LOCAL STORAGE and how to implement in the game.  Way to clear your cookies?
+
+// Adding reload button function
+window.addEventListener("load", event => {
+    document.getElementById("reset-button").onclick = function() {
+        location.reload(true);
+    }
+});
