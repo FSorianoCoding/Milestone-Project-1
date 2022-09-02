@@ -40,8 +40,12 @@ window.addEventListener("load", event => {
     }
 });
 
-window.onload = function() {
+
+
+window.onload = function () {
     createDeck()
 }
-createDeck()
+
+// works when outside of window.onload, but not inside.
+// createDeck()
 console.log(deck)
