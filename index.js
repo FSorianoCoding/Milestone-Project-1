@@ -23,15 +23,18 @@ function createDeck() {
     }
     return deck
 }
+createDeck()
 
 // how to randomize array?
 function shuffleDeck() {
-    // Found the Durstenfeld shuffle to shuffle an array
-    for (let i = array.length - 1; i > 0; i--) {
+    // Found the Durstenfeld algorithm to shuffle an array
+    for (let i = deck.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        [deck[i], deck[j]] = [deck[j], deck[i]];
     }
 }
+shuffleDeck()
+
 
 // Once you have cards, how to account for keeping them 21 and under or for the AI winning if they have 21 and under, but above yours.
 
@@ -51,6 +54,7 @@ function test () {
 window.onload = function () {
     createDeck();
     test()
+    shuffleDeck()
 }
 
 // works when outside of window.onload, but not inside.
