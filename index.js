@@ -34,9 +34,13 @@ let numbers = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"]
 // Merging arrays will only create an array of A-K and C,D,H,S.  
 // Need to assign numbers to each suit and push that into the deck to create a playable deck.
 
-deck.push(suits[0] + numbers[0])
+function createDeck() {
+    let deck = [];
+    for (let i=0; i < numbers.length; i++) {
+        deck.push(numbers[i] + suits[i])
+    }
+}
 console.log(deck)
-
 
 // Once you have cards, how to account for keeping them 21 and under or for the AI winning if they have 21 and under, but above yours.
 
