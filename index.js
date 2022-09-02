@@ -35,14 +35,16 @@ function shuffleDeck() {
 // code works for numbers, but not for A, J, Q, K
 // returns NaN
 function assignValues (card) {
-    value = parseInt(card)
-    let number = value
-    if (isNaN(number)) {  // Ace returning as 10 instead of 11
-        return value = 11
+    number = parseInt(card)
+    
+    if (isNaN(number)) {  
+        if (number = "A") {
+            return number = 11;            
+        } 
+        if (number = "J")
+        return number = 10        
     }
-    else return value = 10
-
-    return value
+    return number
 }
 
 
@@ -70,8 +72,8 @@ window.addEventListener("load", event => {
 
 createDeck()
 shuffleDeck()
-assignValues("J3")  // Ace returning as 10 on console log.
+assignValues("3C")  // All NaN returning as 11 on console log.
 
 // works when outside of window.onload, but not inside.
 console.log(deck)
-console.log(value)
+console.log(number)
