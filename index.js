@@ -32,19 +32,15 @@ function shuffleDeck() {
 }
 
 // Need to find a way to assign value to cards for using to determine score.
-// code works for numbers, but not for A, J, Q, K
-// returns NaN
 function assignValues (card) {
-    number = parseInt(card)
-    
+    number = card[0]
     if (isNaN(number)) {  
-        if (number = "A") {
+        if (number == "A") {
             return number = 11;            
         } 
-        if (number = "J")
-        return number = 10        
+    else return number = 10        
     }
-    return number
+    return parseInt(card)
 }
 
 
@@ -72,7 +68,7 @@ window.addEventListener("load", event => {
 
 createDeck()
 shuffleDeck()
-assignValues("3C")  // All NaN returning as 11 on console log.
+assignValues("JC")  // All NaN returning as 11 on console log.
 
 // works when outside of window.onload, but not inside.
 console.log(deck)
