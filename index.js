@@ -10,22 +10,19 @@ let deck = []
 
 function createDeck() {
     deck = [];   
-
     let suits = ["C", "D", "H", "S"]  
     let numbers = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
     
-    for (let i=0; i < numbers.length; i++) {
-    
+    for (let i=0; i < numbers.length; i++) {   
         for (let s=0; s < suits.length; s++) {
             deck.push(numbers[i] + suits[s])
-        }
-    
+        }    
     }
     return deck
 }
-createDeck()
 
-// how to randomize array?
+
+
 function shuffleDeck() {
     // Found the Durstenfeld algorithm to shuffle an array
     for (let i = deck.length - 1; i > 0; i--) {
@@ -33,7 +30,19 @@ function shuffleDeck() {
         [deck[i], deck[j]] = [deck[j], deck[i]];
     }
 }
-shuffleDeck()
+
+// Need to find a way to assign value to cards for using to determine score.
+// code works for numbers, but not for A, J, Q, K
+// returns NaN
+function assignValues (card) {
+    value = parseInt(card)
+    if (value == "A") {
+        value = 11
+    }
+    else return value = 10
+
+    return value
+}
 
 
 // Once you have cards, how to account for keeping them 21 and under or for the AI winning if they have 21 and under, but above yours.
@@ -47,18 +56,20 @@ window.addEventListener("load", event => {
 });
 
 
-function test () {
-    console.log("TEST")
-}
+// function test () {
+//     console.log("TEST")
+// }
 
-window.onload = function () {
-    createDeck();
-    test()
-    shuffleDeck()
-}
+// window.onload = function () {
+//     createDeck();
+//     test()
+//     shuffleDeck()
+// }
 
+
+createDeck()
+shuffleDeck()
+assignValues("A3")
 // works when outside of window.onload, but not inside.
-// createDeck()
 console.log(deck)
-
-// test() works but createDeck() doesn't inside of window.onload
+console.log(value)
