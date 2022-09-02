@@ -36,8 +36,9 @@ function shuffleDeck() {
 // returns NaN
 function assignValues (card) {
     value = parseInt(card)
-    if (value == "A") {
-        value = 11
+    let number = value
+    if (isNaN(number)) {  // Ace returning as 10 instead of 11
+        return value = 11
     }
     else return value = 10
 
@@ -69,7 +70,8 @@ window.addEventListener("load", event => {
 
 createDeck()
 shuffleDeck()
-assignValues("A3")
+assignValues("J3")  // Ace returning as 10 on console log.
+
 // works when outside of window.onload, but not inside.
 console.log(deck)
 console.log(value)
