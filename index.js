@@ -27,26 +27,30 @@
 let deck = []
 
 // Images will not be applied yet so need to create arrays of card numbers and matching suits.
-// Find a way to use iterate with for loops
 
-// Merging arrays will only create an array of A-K and C,D,H,S.  
+
 // Need to assign numbers to each suit and push that into the deck to create a playable deck.
-
-
-
 function createDeck() {
     deck = [];   // was not working with "let deck = []"
-    let suits = ["C", "D", "H", "S"]  // clubs, diamonds, hearts, spades.
-    let numbers = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"]
+
+    let suits = ["C", "D", "H", "S"]  
+    // clubs, diamonds, hearts, spades.
+    
+    let numbers = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+    // forgot to add "10", was only getting 48 values initially.
+
     for (let i=0; i < numbers.length; i++) {
-        deck.push(numbers[i] + suits[i])
+        // everywhere tried to have me concat to combine the arrays instead of adding the values of each array.
+        for (let s=0; s < suits.length; s++) {
+            deck.push(numbers[i] + suits[s])
+            }
     }
     return deck
 }
 createDeck()
 console.log(deck)
 
-
+// returns ['AC,D,H,S', '2C,D,H,S', '3C,D,H,S', '4C,D,H,S', '5C,D,H,S', '6C,D,H,S', '7C,D,H,S', '8C,D,H,S', '9C,D,H,S', 'JC,D,H,S', 'QC,D,H,S', 'KC,D,H,S']
 
 // Once you have cards, how to account for keeping them 21 and under or for the AI winning if they have 21 and under, but above yours.
 
