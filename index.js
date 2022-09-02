@@ -2,27 +2,6 @@
 // SIMPLE GAME
 
 // Find code for that accounts for a single deck of cards.  Reshuffles the deck after each game.
-// How to account for user and AI both getting cards.
-// async function drawCards() {
-
-//     let response = await fetch('https://www.deckofcardsapi.com/api/deck/qdw3bc0ckqi9/draw/?count=2')
-//     let drawnCards = await response.json()
-//     console.log(drawnCards)
-// }
-// drawCards()
-
-// async function shuffleDeck() {
-
-//     let response = await fetch('https://www.deckofcardsapi.com/api/deck/qdw3bc0ckqi9/shuffle/')
-//     let shuffle = await response.json()
-//     console.log(shuffle)
-// }
-// shuffleDeck()
-
-// Could get API to work, but could not figure out how to apply it to a my own JS or HTML. Not enough experience with json.
-
-
-
 // Define variable I will need to create a deck and use with functions.
 let deck = []
 
@@ -47,15 +26,12 @@ function createDeck() {
     }
     return deck
 }
-createDeck()
-console.log(deck)
+// console.log(deck)
+// Array now returning combined values for a "deck of 52"
 
-// returns ['AC,D,H,S', '2C,D,H,S', '3C,D,H,S', '4C,D,H,S', '5C,D,H,S', '6C,D,H,S', '7C,D,H,S', '8C,D,H,S', '9C,D,H,S', 'JC,D,H,S', 'QC,D,H,S', 'KC,D,H,S']
 
 // Once you have cards, how to account for keeping them 21 and under or for the AI winning if they have 21 and under, but above yours.
 
-// TALLY HOW MANY TIMES PERSON HAS WON.  
-// LOCAL STORAGE and how to implement in the game.  Way to clear your cookies?
 
 // Adding reload button function
 window.addEventListener("load", event => {
@@ -63,3 +39,9 @@ window.addEventListener("load", event => {
         location.reload(true);
     }
 });
+
+window.onload = function() {
+    createDeck()
+}
+createDeck()
+console.log(deck)
