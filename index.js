@@ -36,11 +36,10 @@ let deck = []
 
 function createDeck() {
     deck = [];   // was not working with "let deck = []"
-    // let suits = ["C", "D", "H", "S"]  // clubs, diamonds, hearts, spades.
-    let suits = ["C"];
+    let suits = ["C", "D", "H", "S"]  // clubs, diamonds, hearts, spades.
     let numbers = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"]
     for (let i=0; i < numbers.length; i++) {
-        deck.push(numbers[i] + suits)
+        deck.push(numbers[i] + suits[i])
     }
     return deck
 }
