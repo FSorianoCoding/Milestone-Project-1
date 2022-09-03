@@ -4,6 +4,8 @@
 // Find code for that accounts for a single deck of cards.  Reshuffles the deck after each game.
 // Define variable I will need to create a deck and use with functions.
 let deck = [];
+let bigDeck = [];
+let num_decks = 6
 let aceAmount = 0;
 let playerAce = 0;
 let dealerAce = 0;
@@ -24,6 +26,15 @@ function createDeck() {
     }
     return deck
 }
+
+// Code to try and create 6 decks to use.
+function createDecks(num_decks){
+    bigDeck = [];
+    for(let i=0;i<num_decks;i++){
+      bigDeck.push(createDeck());
+    }
+    return bigDeck;
+  }
 
 
 // Shuffles the deck to be used to draw random cards for dealer and player hands.
@@ -123,6 +134,9 @@ getAces("AC") // provides two Aces
 getAces("A-H") // gives 3 aces
 // assignValues("KC")
 // assignValues("AC")
+
+createDecks(6)
+console.log(bigDeck)
 
 // works when outside of window.onload, but not inside.
 console.log(deck)
