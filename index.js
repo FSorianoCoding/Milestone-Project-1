@@ -67,17 +67,26 @@ function startGame () {
     for (let i=0; i < 1; i++) {
         let cardImg = document.createElement("img");
         let card = deck.shift();
+        
         cardImg.src = "./cards/" + card + ".png";
         document.getElementById("dealerHand").append(cardImg)
+        
+        // add dealerScore value
         dealerScore += assignValues(card)
     }
 
-    // add dealerScore value
-
-    // set two cards for player
-    // add playerScore value
+    // set two cards for player, iterate twice
+    for (let i=0; i < 2; i++) {
+        let cardImg = document.createElement("img");
+        let card = deck.shift();
+        
+        cardImg.src = "./cards/" + card + ".png";
+        document.getElementById("playerHand").append(cardImg)
+        
+        // add playerScore value
+        playerScore += assignValues(card)        
+    }
 }
-
 
 
 // Adding reload button function
@@ -113,7 +122,8 @@ console.log(number)
 console.log(aceAmount)
 
 startGame()
-console.log(dealerScore)
+console.log(dealerScore)  // dealer score is adding up.
+console.log(playerScore)
 
 // let first = deck.shift()
 // let second = deck.shift()
