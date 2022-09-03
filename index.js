@@ -17,7 +17,7 @@ function createDeck() {
     
     for (let i=0; i < numbers.length; i++) {   
         for (let s=0; s < suits.length; s++) {
-            deck.push(numbers[i] + suits[s])
+            deck.push(numbers[i] + "-" + suits[s])
         }    
     }
     return deck
@@ -67,7 +67,7 @@ function startGame () {
     for (let i=0; i < 1; i++) {
         let cardImg = document.createElement("img");
         let card = deck.shift();
-        card.src = "/cards/" + card + ".png"
+        cardImg.src = "./cards/" + card + ".png";
         document.getElementById("dealerHand").append(cardImg)
     }
 
