@@ -3,11 +3,10 @@
 
 // Find code for that accounts for a single deck of cards.  Reshuffles the deck after each game.
 // Define variable I will need to create a deck and use with functions.
-let deck = []
+let deck = [];
+let aceAmount = 0
 
-// Images will not be applied yet so need to create arrays of card numbers and matching suits.
-
-
+// function combines suits and numbers to create a deck of cards.
 function createDeck() {
     deck = [];   
     let suits = ["C", "D", "H", "S"]  
@@ -22,7 +21,7 @@ function createDeck() {
 }
 
 
-
+// Shuffles the deck to be used to draw random cards for dealer and player hands.
 function shuffleDeck() {
     // Found the Durstenfeld algorithm to shuffle an array
     for (let i = deck.length - 1; i > 0; i--) {
@@ -31,7 +30,8 @@ function shuffleDeck() {
     }
 }
 
-// Need to find a way to assign value to cards for using to determine score.
+// Code to assign a value to the cards based on first index of card string
+// A = 11, J/Q/K = 10, numbers = their number parsed into an integer
 function assignValues (card) {
     number = card[0]
     if (isNaN(number)) {  
@@ -42,6 +42,17 @@ function assignValues (card) {
     }
     return parseInt(card)
 }
+
+
+//  How to account for more than one Ace in your hand.
+function getAces (card) {    
+    if (card[0] == 'A') {
+        return aceAmount += 1
+    }
+    else aceAmount = 0
+}
+
+
 
 
 // Once you have cards, how to account for keeping them 21 and under or for the AI winning if they have 21 and under, but above yours.
@@ -68,8 +79,12 @@ window.addEventListener("load", event => {
 
 createDeck()
 shuffleDeck()
-assignValues("JC")  // All NaN returning as 11 on console log.
+assignValues("5C") 
+getAces("AD") 
+// assignValues("KC")
+// assignValues("AC")
 
 // works when outside of window.onload, but not inside.
 console.log(deck)
 console.log(number)
+console.log(aceAmount)
