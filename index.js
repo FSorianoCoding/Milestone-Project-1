@@ -69,6 +69,7 @@ function startGame () {
         let card = deck.shift();
         cardImg.src = "./cards/" + card + ".png";
         document.getElementById("dealerHand").append(cardImg)
+        dealerScore += assignValues(card)
     }
 
     // add dealerScore value
