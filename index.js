@@ -59,10 +59,18 @@ function getAces (card) {
 
 function startGame () {
     // set faceDown card and assign value for dealer
+    // add value to facedown card
     faceDown = deck.shift()
     dealerScore = assignValues(faceDown)
-    // add value to facedown card
     // add face up card 
+    // Need to create <img src="./cards/CARD.png">
+    for (let i=0; i < 1; i++) {
+        let cardImg = document.createElement("img");
+        let card = deck.shift();
+        card.src = "/cards/" + card + ".png"
+        document.getElementById("dealerHand").append(cardImg)
+    }
+
     // add dealerScore value
 
     // set two cards for player
