@@ -6,6 +6,9 @@
 let deck = [];
 let aceAmount = 0
 
+let playerScore = 0  
+let dealerScore = 0  
+
 // function combines suits and numbers to create a deck of cards.
 function createDeck() {
     deck = [];   
@@ -54,8 +57,12 @@ function getAces (card) {
 
 
 
+function startGame () {
+    // set faceDown card and assign value for dealer
 
-// Once you have cards, how to account for keeping them 21 and under or for the AI winning if they have 21 and under, but above yours.
+    // set two cards for player
+}
+
 
 
 // Adding reload button function
@@ -80,7 +87,8 @@ window.addEventListener("load", event => {
 createDeck()
 shuffleDeck()
 assignValues("5C") 
-getAces("AD") 
+getAces("AD") // provides one Ace
+getAces("AC") // provides two Aces
 // assignValues("KC")
 // assignValues("AC")
 
