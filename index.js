@@ -60,7 +60,7 @@ function getAces (card) {
 function startGame () {
     // set faceDown card and assign value for dealer
     faceDown = deck.shift()
-    dealerValue = assignValues(faceDown)
+    dealerScore = assignValues(faceDown)
     // add value to facedown card
     // add face up card 
     // add dealerScore value
