@@ -59,8 +59,14 @@ function getAces (card) {
 
 function startGame () {
     // set faceDown card and assign value for dealer
+    faceDown = deck.shift()
+    dealerValue = assignValues(faceDown)
+    // add value to facedown card
+    // add face up card 
+    // add dealerScore value
 
     // set two cards for player
+    // add playerScore value
 }
 
 
@@ -96,3 +102,12 @@ getAces("AC") // provides two Aces
 console.log(deck)
 console.log(number)
 console.log(aceAmount)
+
+startGame()
+console.log(dealerScore)
+
+// let first = deck.shift()
+// let second = deck.shift()
+
+// console.log(first)
+// console.log(second)
