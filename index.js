@@ -4,10 +4,12 @@
 // Find code for that accounts for a single deck of cards.  Reshuffles the deck after each game.
 // Define variable I will need to create a deck and use with functions.
 let deck = [];
-let aceAmount = 0
+let aceAmount = 0;
+let playerAce = 0;
+let dealerAce = 0;
 
-let playerScore = 0  
-let dealerScore = 0  
+let playerScore = 0;  
+let dealerScore = 0; 
 
 // function combines suits and numbers to create a deck of cards.
 function createDeck() {
@@ -89,6 +91,11 @@ function startGame () {
 }
 
 
+// Need to a add code to account for more than two Ace to keep initial values under 21
+
+// create hit and stay buttons
+
+
 // Adding reload button function
 window.addEventListener("load", event => {
     document.getElementById("reset-button").onclick = function() {
@@ -113,6 +120,7 @@ shuffleDeck()
 assignValues("5C") 
 getAces("AD") // provides one Ace
 getAces("AC") // provides two Aces
+getAces("A-H") // gives 3 aces
 // assignValues("KC")
 // assignValues("AC")
 
@@ -123,10 +131,4 @@ console.log(aceAmount)
 
 startGame()
 console.log(dealerScore)  // dealer score is adding up.
-console.log(playerScore)
-
-// let first = deck.shift()
-// let second = deck.shift()
-
-// console.log(first)
-// console.log(second)
+console.log(playerScore)  // player score adding up
