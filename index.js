@@ -96,17 +96,19 @@ function startGame () {
 // Need to a add code to account for more than two Ace to keep initial values under 21
 // If you get two Aces, you need to reduce one so you don't get score of 22.
 // If you get three Aces, you need the score to reflect 13 
-function adjustScore(playerScore, playerAce) {
+function adjustScore(score, ace) {
     
-    if (aceAmount >= 1 && playerScore > 21) {
-        playerScore -= 10;
-        playerAce -= 1;
+    if (ace >= 1 && score > 21) {
+        score -= 10;
+        ace -= 1;
     }
-    else return playerScore
+    else return score
 }
 
-let hitButton = document.getElementById("hit-button")
-document.getElementById("hit-button").addEventListener("click", hit)
+
+// Defining hitButton to use in hit function
+let hitButton = document.getElementById("hit-button");
+hitButton.addEventListener("click", hit)
 
 
 // Hit function that appends card to players hand.
@@ -115,11 +117,11 @@ function hit() {
     let card = deck.shift();
         
     cardImg.src = "./cards/" + card + ".png";
-    document.getElementById("playerHand").append(cardImg)
+    document.getElementById("playerHand").append(cardImg);
         
     // add dealerScore value
-    playerScore += assignValues(card)
-    playerAce += getAces(card)
+    playerScore += assignValues(card);
+    playerAce += getAces(card);
     
     
     if (adjustScore(playerScore, playerAce) >= 21) {
@@ -128,7 +130,18 @@ function hit() {
 
 }
 
+let stayButton = document.getElementById("stay-button");
+stayButton.addEventListener("click", stay)
 
+// Stay function to end game.
+function stay() {
+    // Need to get player score to compare for determining if Dealer needs to draw a card.
+    playerScore = adjustScore(playerScore, playerAce);
+    document.getElementById("playerScore").innerText = playerScore;
+    // Code to flip faceDown card over
+
+    // Code for if dealer is <= 21 && < playerSum, to draw a card
+}
 
 
 // Adding reload button function
@@ -152,20 +165,20 @@ window.addEventListener("load", event => {
 
 createDeck()
 shuffleDeck()
-assignValues("5C") 
-getAces("AD") // provides one Ace
-getAces("AC") // provides two Aces
-getAces("A-H") // gives 3 aces
+startGame()
+// assignValues("5C") 
+// getAces("AD") // provides one Ace
+// getAces("AC") // provides two Aces
+// getAces("A-H") // gives 3 aces
 // assignValues("KC")
 // assignValues("AC")
 // hit()
-
+// stay()
 
 // works when outside of window.onload, but not inside.
 console.log(deck)
 console.log(number)
 console.log(aceAmount)
 
-startGame()
 console.log(dealerScore)  // dealer score is adding up.
 console.log(playerScore)  // player score adding up
