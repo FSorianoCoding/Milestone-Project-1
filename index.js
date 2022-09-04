@@ -1,7 +1,6 @@
 // Blackjack variables
 
 let deck = [];
-let aceAmount = 0;
 
 let playerAce = 0;
 let dealerAce = 0;
@@ -19,6 +18,9 @@ let results = document.getElementById("gameResults")
 
 let faceDown
 
+
+
+
 // function combines suits and numbers to create a deck of cards.
 function createDeck() {
     deck = [];   
@@ -34,6 +36,8 @@ function createDeck() {
 }
 
 
+
+
 // Shuffles the deck to be used to draw random cards for dealer and player hands.
 function shuffleDeck() {
     
@@ -44,13 +48,15 @@ function shuffleDeck() {
 }
 
 
+
+
 // Code to assign a value to the cards based on first index of card string.
 // A = 11, J/Q/K = 10, numbers = their number parsed into an integer
 function assignValues (card) {
     number = card[0]
     if (isNaN(number)) {  
         if (number == "A") {
-            return number = 11;            
+            return number = 1;            
         } 
     else return number = 10        
     }
@@ -59,13 +65,32 @@ function assignValues (card) {
 
 
 //  How to account for more than one Ace in your hand.
-function getAces (card) {    
+//  Get rid of global ace count and have it account only per player or dealer aces.
+function getAces(card) {    
     if (card[0] == 'A') {
-        return aceAmount = 1
+        return 1
     }
-    else aceAmount = 0
+    else return 0
 }
 
+
+function adjustPScore(playerScore, playerAce) {
+    
+    while (playerAce > 0 && playerScore < 12) {
+        playerScore += 10;
+        playerAce -= 1;
+    }
+    return playerScore
+}
+
+function adjustDScore(dealerScore, dealerAce) {
+    
+    while (dealerAce > 0 && dealerScore < 12) {
+        dealerScore += 10;
+        dealerAce -= 1;
+    }
+    return dealerScore
+}
 
 
 function startGame () {
@@ -100,19 +125,9 @@ function startGame () {
 }
 
 
-// Need to a add code to account for more than two Ace to keep initial values under 21
-// If you get two Aces, you need to reduce one so you don't get score of 22.
-// If you get three Aces, you need the score to reflect 13 
-function adjustScore(playerScore, playerAce) {
-    
-    if (playerAce > 0 && playerScore > 21) {
-        playerScore -= 10;
-        playerAce -= 1;
-    }
-    else return playerScore
+function faceDownCardFlip() {
+    document.getElementById("faceDown").src = "./cards/" + faceDown + ".png";
 }
-
-// function adjustDealer(dealerScore, dealerAce)
 
 
 // Hit function that appends card to players hand.
@@ -126,27 +141,29 @@ function hit() {
     playerScore += assignValues(card);
     playerAce += getAces(card);
             
-    if (adjustScore(playerScore, playerAce) >= 21) {
+    if (adjustPScore(playerScore, playerAce) >= 21) {
         hitButton.removeEventListener("click", hit)
     }
 
-    if (adjustScore(playerScore, playerAce) > 21) {
+    if (adjustPScore(playerScore, playerAce) > 21) {
         results.innerText = "You Lose!"
-        document.getElementById("dealerScore").innerText = dealerScore
-        document.getElementById("faceDown").src = "./cards/" + faceDown + ".png";
+        document.getElementById("dealerScore").innerText = dealerScore        
+        faceDownCardFlip()
     }
     document.getElementById("playerScore").innerText = playerScore
 }
 
 
+
 // Stay function to end game.
 function stay() {
-    // Need to get player score to compare for determining if Dealer needs to draw a card.
-    playerScore = adjustScore(playerScore, playerAce);  // Lower ace code is not working, will just have to count as 11.
+    
+    // Lower ace code is not working, will just have to count as 11.
+    playerScore = adjustPScore(playerScore, playerAce);
     document.getElementById("playerScore").innerText = playerScore;
-    // Code to flip faceDown card over
-    document.getElementById("faceDown").src = "./cards/" + faceDown + ".png";
-    dealerScore = adjustScore(dealerScore, dealerAce);
+  
+    faceDownCardFlip()
+    dealerScore = adjustDScore(dealerScore, dealerAce);
     // document.getElementById("dealerScore").innerText = dealerScore
     
     // Code for if dealer is <= 21 && < playerSum, to draw a card
@@ -156,10 +173,10 @@ function stay() {
         cardImg.src = "./cards/" + card + ".png";
         document.getElementById("dealerHand").append(cardImg);
         dealerScore += assignValues(card);
-        dealerAce += getAces(card);
-    }
+        dealerAce += getAces(card);        
+    } 
     
-    dealerScore = adjustScore(dealerScore, dealerAce);
+    dealerScore = adjustDScore(dealerScore, dealerAce);
     document.getElementById("dealerScore").innerText = dealerScore
 
     hitButton.removeEventListener("click", hit)
@@ -214,14 +231,17 @@ startGame()
 // assignValues("AC")
 // hit()
 // stay()
-
-
-// works when outside of window.onload, but not inside.
+// playerAce += getAces("A-D")
+// playerAce += getAces("AC")
+// // works when outside of window.onload, but not inside.
 console.log(deck)
 // console.log(number)
 // hit()
-console.log(aceAmount)
+// console.log(aceAmount)
 
-// console.log(dealerScore)  // dealer score is adding up.
+console.log(dealerScore)  // dealer score is adding up.
+console.log(dealerAce)
+
 console.log(playerScore)  // player score adding up
 // console.log(faceDown)  // Shows value of card.
+console.log(playerAce)
