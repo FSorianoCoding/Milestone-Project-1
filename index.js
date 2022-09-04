@@ -15,8 +15,7 @@ hitButton.addEventListener("click", hit)
 let stayButton = document.getElementById("stay-button");
 stayButton.addEventListener("click", stay)
 
-let faceDown = document.getElementById("faceDown")
-
+let faceDown
 
 // function combines suits and numbers to create a deck of cards.
 function createDeck() {
@@ -139,7 +138,9 @@ function stay() {
     playerScore = adjustScore(playerScore, playerAce);
     document.getElementById("playerScore").innerText = playerScore;
     // Code to flip faceDown card over
-    document.getElementById("faceDown").src = "./cards/" + faceDown + ".png"
+    document.getElementById("faceDown").src = "./cards/" + faceDown + ".png";
+    dealerScore = adjustScore(dealerScore, dealerAce);
+    document.getElementById("dealerScore").innerText = dealerScore
     // Code for if dealer is <= 21 && < playerSum, to draw a card
 }
 
@@ -182,3 +183,4 @@ console.log(aceAmount)
 
 console.log(dealerScore)  // dealer score is adding up.
 console.log(playerScore)  // player score adding up
+console.log(faceDown)  // Shows value of card.
