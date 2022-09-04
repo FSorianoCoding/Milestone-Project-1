@@ -93,8 +93,24 @@ function startGame () {
 
 
 // Need to a add code to account for more than two Ace to keep initial values under 21
+// function adjustScore (score, aces) {
+//     let score = dealerScore
+// }
+
 
 // create hit and stay buttons
+function hit() {
+    let cardImg = document.createElement("img");
+    let card = deck.shift();
+        
+    cardImg.src = "./cards/" + card + ".png";
+    document.getElementById("playerHand").append(cardImg)
+        
+    // add dealerScore value
+    playerScore += assignValues(card)
+}
+
+
 
 
 // Adding reload button function
