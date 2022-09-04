@@ -133,6 +133,7 @@ function hit() {
     if (adjustScore(playerScore, playerAce) > 21) {
         results.innerText = "You Lose!"
         document.getElementById("dealerScore").innerText = dealerScore
+        document.getElementById("faceDown").src = "./cards/" + faceDown + ".png";
     }
     document.getElementById("playerScore").innerText = playerScore
 }
