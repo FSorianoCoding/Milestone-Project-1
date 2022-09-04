@@ -1,8 +1,5 @@
-// Blackjack
-// SIMPLE GAME
+// Blackjack variables
 
-// Find code for that accounts for a single deck of cards.  Reshuffles the deck after each game.
-// Define variable I will need to create a deck and use with functions.
 let deck = [];
 let aceAmount = 0;
 
@@ -29,14 +26,15 @@ function createDeck() {
 
 // Shuffles the deck to be used to draw random cards for dealer and player hands.
 function shuffleDeck() {
-    // Found the Durstenfeld algorithm to shuffle an array
+    
     for (let i = deck.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [deck[i], deck[j]] = [deck[j], deck[i]];
     }
 }
 
-// Code to assign a value to the cards based on first index of card string
+
+// Code to assign a value to the cards based on first index of card string.
 // A = 11, J/Q/K = 10, numbers = their number parsed into an integer
 function assignValues (card) {
     number = card[0]
@@ -72,10 +70,11 @@ function startGame () {
         let card = deck.shift();
         
         cardImg.src = "./cards/" + card + ".png";
-        document.getElementById("dealerHand").append(cardImg)
+        document.getElementById("dealerHand").append(cardImg);
         
         // add dealerScore value
-        dealerScore += assignValues(card)
+        dealerScore += assignValues(card);
+        dealerAce += getAces(card)
     }
 
     // set two cards for player, iterate twice
@@ -87,18 +86,27 @@ function startGame () {
         document.getElementById("playerHand").append(cardImg)
         
         // add playerScore value
-        playerScore += assignValues(card)        
+        playerScore += assignValues(card);
+        playerAce += getAces(card) 
     }
 }
 
 
 // Need to a add code to account for more than two Ace to keep initial values under 21
-// function adjustScore (score, aces) {
-//     let score = dealerScore
-// }
+// If you get two Aces, you need to reduce one so you don't get score of 22.
+// If you get three Aces, you need the score to reflect 13 
+function adjustScore(playerScore, playerAce) {
+    
+    if (aceAmount >= 1 && playerScore > 21) {
+        playerScore -= 10;
+        playerAce -= 1;
+    }
+}
 
 
-// create hit and stay buttons
+
+
+// Hit function that appends card to players hand.
 function hit() {
     let cardImg = document.createElement("img");
     let card = deck.shift();
@@ -111,6 +119,13 @@ function hit() {
 }
 
 
+document.getElementById("hit-button").addEventListener("click", (playerScore) => {
+    hit ()
+    let hitButton = document.getElementById("hit-button")
+    if (playerScore >= 21) {
+        hitButton.preventDefault()
+    }
+})
 
 
 // Adding reload button function
@@ -140,6 +155,7 @@ getAces("AC") // provides two Aces
 getAces("A-H") // gives 3 aces
 // assignValues("KC")
 // assignValues("AC")
+// hit()
 
 
 // works when outside of window.onload, but not inside.
