@@ -119,11 +119,10 @@ function hit() {
 }
 
 
-document.getElementById("hit-button").addEventListener("click", (playerScore) => {
+document.getElementById("hit-button").addEventListener("click", (event) => {
     hit ()
-    let hitButton = document.getElementById("hit-button")
-    if (playerScore >= 21) {
-        hitButton.preventDefault()
+    if (adjustScore(playerScore, playerAce) >= 21) {
+        event.stopPropagation()
     }
 })
 
