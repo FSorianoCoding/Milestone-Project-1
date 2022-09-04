@@ -63,6 +63,7 @@ function startGame () {
     // add value to facedown card
     faceDown = deck.shift()
     dealerScore = assignValues(faceDown)
+    dealerAce = getAces(faceDown)
     // add face up card 
     // Need to create <img src="./cards/CARD.png">
     for (let i=0; i < 1; i++) {
@@ -101,9 +102,11 @@ function adjustScore(playerScore, playerAce) {
         playerScore -= 10;
         playerAce -= 1;
     }
+    else return playerScore
 }
 
-
+let hitButton = document.getElementById("hit-button")
+document.getElementById("hit-button").addEventListener("click", hit)
 
 
 // Hit function that appends card to players hand.
@@ -116,15 +119,16 @@ function hit() {
         
     // add dealerScore value
     playerScore += assignValues(card)
+    playerAce += getAces(card)
+    
+    
+    if (adjustScore(playerScore, playerAce) >= 21) {
+        hitButton.removeEventListener("click", hit)
+    }
+
 }
 
 
-document.getElementById("hit-button").addEventListener("click", (event) => {
-    hit ()
-    if (adjustScore(playerScore, playerAce) >= 21) {
-        event.stopPropagation()
-    }
-})
 
 
 // Adding reload button function
