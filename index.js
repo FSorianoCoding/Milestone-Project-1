@@ -106,7 +106,7 @@ function startGame () {
 // If you get three Aces, you need the score to reflect 13 
 function adjustScore(score, ace) {
     
-    if (ace >= 1 && score > 21) {
+    if (ace >= 0 && score > 21) {
         score -= 10;
         ace -= 1;
     }
@@ -125,6 +125,7 @@ function hit() {
     // add dealerScore value
     playerScore += assignValues(card);
     playerAce += getAces(card);
+    playerScore = adjustScore(playerScore, playerAce)
         
     if (adjustScore(playerScore, playerAce) >= 21) {
         hitButton.removeEventListener("click", hit)
@@ -140,8 +141,22 @@ function stay() {
     // Code to flip faceDown card over
     document.getElementById("faceDown").src = "./cards/" + faceDown + ".png";
     dealerScore = adjustScore(dealerScore, dealerAce);
-    document.getElementById("dealerScore").innerText = dealerScore
+    // document.getElementById("dealerScore").innerText = dealerScore
+    
     // Code for if dealer is <= 21 && < playerSum, to draw a card
+    while (dealerScore <= playerScore && dealerScore < 17) {
+        let cardImg = document.createElement("img");
+        let card = deck.shift();        
+        cardImg.src = "./cards/" + card + ".png";
+        document.getElementById("dealerHand").append(cardImg);
+        dealerScore += assignValues(card);
+        dealerAce += getAces(card);
+    }
+    
+    dealerScore = adjustScore(dealerScore, dealerAce);
+    document.getElementById("dealerScore").innerText = dealerScore
+
+
 }
 
 
