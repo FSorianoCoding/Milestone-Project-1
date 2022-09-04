@@ -9,6 +9,15 @@ let dealerAce = 0;
 let playerScore = 0;  
 let dealerScore = 0; 
 
+let hitButton = document.getElementById("hit-button");
+hitButton.addEventListener("click", hit)
+
+let stayButton = document.getElementById("stay-button");
+stayButton.addEventListener("click", stay)
+
+let faceDown = document.getElementById("faceDown")
+
+
 // function combines suits and numbers to create a deck of cards.
 function createDeck() {
     deck = [];   
@@ -106,32 +115,23 @@ function adjustScore(score, ace) {
 }
 
 
-// Defining hitButton to use in hit function
-let hitButton = document.getElementById("hit-button");
-hitButton.addEventListener("click", hit)
-
 
 // Hit function that appends card to players hand.
 function hit() {
     let cardImg = document.createElement("img");
-    let card = deck.shift();
-        
+    let card = deck.shift();        
     cardImg.src = "./cards/" + card + ".png";
     document.getElementById("playerHand").append(cardImg);
         
     // add dealerScore value
     playerScore += assignValues(card);
     playerAce += getAces(card);
-    
-    
+        
     if (adjustScore(playerScore, playerAce) >= 21) {
         hitButton.removeEventListener("click", hit)
     }
-
 }
 
-let stayButton = document.getElementById("stay-button");
-stayButton.addEventListener("click", stay)
 
 // Stay function to end game.
 function stay() {
@@ -139,7 +139,7 @@ function stay() {
     playerScore = adjustScore(playerScore, playerAce);
     document.getElementById("playerScore").innerText = playerScore;
     // Code to flip faceDown card over
-
+    document.getElementById("faceDown").src = "./cards/" + faceDown + ".png"
     // Code for if dealer is <= 21 && < playerSum, to draw a card
 }
 
