@@ -200,7 +200,7 @@ function stay() {
 
 // Adding reload button function
 window.addEventListener("load", event => {
-    document.getElementById("reset-button").onclick = function() {
+    document.getElementById("deal-button").onclick = function() {
         location.reload(true);
     }
 });

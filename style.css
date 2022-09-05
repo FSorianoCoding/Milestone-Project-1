@@ -2,6 +2,10 @@ body {
     text-align: center;
     color: white;
     background-color: green;
+    background-image: url('https://pikwizard.com/photos/pair-of-dice-and-casino-chips-on-poker-table--2fc76fe46cd3af808ce2b4fba1cd8692-m.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 105%;
 }
 
 h1 {
