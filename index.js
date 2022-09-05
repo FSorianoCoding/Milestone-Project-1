@@ -216,16 +216,13 @@ window.addEventListener("load", event => {
 //     console.log("TEST")
 // }
 
-// window.onload = function () {
-//     createDeck();
-//     test()
-//     shuffleDeck()
-// }
+window.onload = function () {
+    createDeck();    
+    shuffleDeck()
+    startGame
+}
 
 
-createDeck()
-shuffleDeck()
-startGame()
 // assignValues("5C") 
 // getAces("AD") // provides one Ace
 // getAces("AC") // provides two Aces
@@ -237,14 +234,14 @@ startGame()
 // playerAce += getAces("A-D")
 // playerAce += getAces("AC")
 // // works when outside of window.onload, but not inside.
-console.log(deck)
+// console.log(deck)
 // console.log(number)
 // hit()
 // console.log(aceAmount)
 
-console.log(dealerScore)  // dealer score is adding up.
-console.log(dealerAce)
+// console.log(dealerScore)  // dealer score is adding up.
+// console.log(dealerAce)
 
-console.log(playerScore)  // player score adding up
-// console.log(faceDown)  // Shows value of card.
-console.log(playerAce)
+// console.log(playerScore)  // player score adding up
+// // console.log(faceDown)  // Shows value of card.
+// console.log(playerAce)
