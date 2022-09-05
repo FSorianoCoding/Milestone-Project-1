@@ -20,7 +20,6 @@ let faceDown
 
 
 
-
 // function combines suits and numbers to create a deck of cards.
 function createDeck() {
     deck = [];   
@@ -73,7 +72,11 @@ function getAces(card) {
     else return 0
 }
 
-
+//  "while" working when "if" statement was not.
+//  if runs once, where as while runs as long as statement is true?
+//  while runs like a "for" loops.
+//  tried to refractor this into one code, 
+//  but could not figure out a way to combine to account for both player and dealer score.
 function adjustPScore(playerScore, playerAce) {
     
     while (playerAce > 0 && playerScore < 12) {
@@ -176,7 +179,7 @@ function stay() {
         dealerAce += getAces(card);        
     } 
     
-    dealerScore = adjustDScore(dealerScore, dealerAce);
+    // dealerScore = adjustDScore(dealerScore, dealerAce);
     document.getElementById("dealerScore").innerText = dealerScore
 
     hitButton.removeEventListener("click", hit)
