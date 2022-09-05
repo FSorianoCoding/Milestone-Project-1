@@ -36,16 +36,14 @@ function createDeck() {
 
 
 
-
 // Shuffles the deck to be used to draw random cards for dealer and player hands.
 function shuffleDeck() {
-    
+    // Randomize array in-place using Durstenfeld shuffle algorithm 
     for (let i = deck.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [deck[i], deck[j]] = [deck[j], deck[i]];
     }
 }
-
 
 
 
@@ -63,6 +61,7 @@ function assignValues (card) {
 }
 
 
+
 //  How to account for more than one Ace in your hand.
 //  Get rid of global ace count and have it account only per player or dealer aces.
 function getAces(card) {    
@@ -72,9 +71,8 @@ function getAces(card) {
     else return 0
 }
 
-//  "while" working when "if" statement was not.
-//  if runs once, where as while runs as long as statement is true?
-//  while runs like a "for" loops.
+
+
 //  tried to refractor this into one code, 
 //  but could not figure out a way to combine to account for both player and dealer score.
 function adjustPScore(playerScore, playerAce) {
@@ -128,9 +126,11 @@ function startGame () {
 }
 
 
+
 function faceDownCardFlip() {
     document.getElementById("faceDown").src = "./cards/" + faceDown + ".png";
 }
+
 
 
 // Hit function that appends card to players hand.
@@ -160,16 +160,13 @@ function hit() {
 
 // Stay function to end game.
 function stay() {
-    
-    // Lower ace code is not working, will just have to count as 11.
+        
     playerScore = adjustPScore(playerScore, playerAce);
     document.getElementById("playerScore").innerText = playerScore;
   
     faceDownCardFlip()
-    dealerScore = adjustDScore(dealerScore, dealerAce);
-    // document.getElementById("dealerScore").innerText = dealerScore
+    dealerScore = adjustDScore(dealerScore, dealerAce);      
     
-    // Code for if dealer is <= 21 && < playerSum, to draw a card
     while (dealerScore <= playerScore && dealerScore < 17) {
         let cardImg = document.createElement("img");
         let card = deck.shift();        
@@ -178,12 +175,9 @@ function stay() {
         dealerScore += assignValues(card);
         dealerAce += getAces(card);        
     } 
-    
-    // dealerScore = adjustDScore(dealerScore, dealerAce);
+        
     document.getElementById("dealerScore").innerText = dealerScore
-
     hitButton.removeEventListener("click", hit)
-
     
     if (playerScore <= 21 && playerScore > dealerScore ) {
         results.innerText = "You Win!"
@@ -200,8 +194,8 @@ function stay() {
     else if (playerScore == dealerScore) {
         results.innerText = "Tie."
     }
-
 }
+
 
 
 // Adding reload button function
