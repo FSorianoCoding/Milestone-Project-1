@@ -168,7 +168,9 @@ function stay() {
     dealerScore = adjustDScore(dealerScore, dealerAce);      
     
     if (adjustPScore(playerScore, playerAce) < 10) {
-        stayButton.removeEventListener("click", hit)
+        stayButton.addEventListener("click", function(event){
+            event.preventDefault()
+        })
     }
 
     while (dealerScore <= playerScore && dealerScore < 17) {
