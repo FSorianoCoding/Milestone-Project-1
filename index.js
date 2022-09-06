@@ -166,12 +166,7 @@ function stay() {
   
     faceDownCardFlip()
     dealerScore = adjustDScore(dealerScore, dealerAce);      
-    
-    if (adjustPScore(playerScore, playerAce) < 10) {
-        stayButton.addEventListener("click", function(event){
-            event.preventDefault()
-        })
-    }
+
 
     while (dealerScore <= playerScore && dealerScore < 17) {
         let cardImg = document.createElement("img");
